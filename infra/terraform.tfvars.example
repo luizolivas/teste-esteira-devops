@@ -1,0 +1,15 @@
+# Copy this file to terraform.tfvars and fill in your values:
+#   cp terraform.tfvars.example terraform.tfvars
+
+aws_region         = "us-east-1"
+project_name       = "devops-demo"
+instance_type      = "t2.micro"
+volume_type        = "gp3"
+volume_size        = 20
+app_port           = 8000
+
+# Restrict SSH to your public IP (find it at https://ifconfig.me)
+allowed_ssh_cidr   = "YOUR_PUBLIC_IP/32"
+
+# Paste the contents of your SSH public key (e.g. devops-key.pub)
+public_key         = "ssh-ed25519 AAAA... your-email@example.com"
