@@ -23,9 +23,9 @@ variable "public_subnet_cidr" {
 }
 
 variable "instance_type" {
-  description = "EC2 instance type (t2.micro is Free Tier eligible in us-east-1)"
+  description = "EC2 instance type (t3.micro is Free Tier eligible on new AWS accounts)"
   type        = string
-  default     = "t2.micro"
+  default     = "t3.micro"
 }
 
 variable "volume_type" {
@@ -37,7 +37,7 @@ variable "volume_type" {
 variable "volume_size" {
   description = "EBS volume size in GB (Free Tier includes 30 GB)"
   type        = number
-  default     = 20
+  default     = 30
 }
 
 variable "app_port" {

@@ -42,3 +42,6 @@ Thumbs.db
 
 # Docker
 docker-compose.override.yml
+devops-key.pub
+devops-key
+infra/terraform.tfvars.example

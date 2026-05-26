@@ -100,9 +100,9 @@ A infraestrutura está definida em [`infra/`](infra/) com Terraform e segue rigo
 flowchart LR
   Internet --> IGW[InternetGateway]
   IGW --> PubSubnet[PublicSubnet]
-  PubSubnet --> EC2[EC2_t2_micro]
+  PubSubnet --> EC2[EC2_t3_micro]
   EC2 --> SG[SecurityGroup]
-  EC2 --> EBS[EBS_gp3_20GB]
+  EC2 --> EBS[EBS_gp3_30GB]
 ```
 
 ### Recursos provisionados
@@ -112,8 +112,8 @@ flowchart LR
 | VPC | `10.0.0.0/16` com DNS | Rede isolada mínima |
 | Subnet pública | `10.0.1.0/24`, IP público automático | Acesso direto sem NAT Gateway (custo) |
 | Internet Gateway | Rota `0.0.0.0/0` | Conectividade externa |
-| EC2 | `t2.micro` (us-east-1) | 750 h/mês gratuitas no Free Tier |
-| EBS | `gp3`, 20 GB, criptografado | Dentro dos 30 GB gratuitos |
+| EC2 | `t3.micro` | Free Tier em contas novas (`t2.micro` não é mais elegível) |
+| EBS | `gp3`, 30 GB, criptografado | Mínimo da AMI AL2023; dentro dos 30 GB gratuitos |
 | Security Group | Portas 22 (SSH) e 8000 (app) | Mínimo necessário |
 | Key Pair | Chave SSH do operador | Acesso seguro para deploy |
 
@@ -204,13 +204,13 @@ devops/
 
 | Serviço | Custo mensal (Free Tier) |
 |---------|--------------------------|
-| EC2 t2.micro (750 h) | $0 |
-| EBS gp3 20 GB | $0 |
+| EC2 t3.micro (750 h) | $0 |
+| EBS gp3 30 GB | $0 |
 | GitHub Actions (repo público) | $0 |
 | GHCR (500 MB storage) | $0 |
 | **Total** | **$0/mês** |
 
-> Após 12 meses de Free Tier ou excedendo limites, a instância t2.micro custa aproximadamente $8–10/mês.
+> Após 12 meses de Free Tier ou excedendo limites, a instância t3.micro custa aproximadamente $7–9/mês.
 
 ---
 
